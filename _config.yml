@@ -18,7 +18,7 @@ language: 'en-uk'
 short_url: 'bajalovic.github.io'
 google_analytics: 
 disqus: 
-baseurl: '/blog/'
+baseurl: ''
 
 # Permalinks
 permalink: /:title
