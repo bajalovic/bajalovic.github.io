@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "JSON API Multi Lang Support"
+date:   2015-11-06 02:00:02
+categories: json jsonapi rails i18n
+---
+
 # JSON API Multi Lang Support
 
 I started using `jsonapi-resources` gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/
@@ -10,9 +17,9 @@ I started using `globalize-accessors` gem as well, as they provide getters and s
 
 This is the JSON response for 
 
-*GET /api/v1/pages/8*
+**GET /api/v1/pages/8**
 
-```json
+~~~json
 {
   "data": {
     "id": "8",
@@ -39,11 +46,11 @@ This is the JSON response for
     }
   }
 }
-```
+~~~
 
 I defined PageResource  as
 
-```ruby
+~~~ruby
 attributes :slug, :translations
 
 def translations
@@ -56,21 +63,21 @@ def translations
     end
     translations
   end
-```
+~~~
 
 This will generate a flatten relationship output. 
 
 In order to update translations in same manner, I had to enable translations through the strong parameters
 
-```ruby
+~~~ruby
 def page_params
     params.require(:data).permit(attributes: [:slug, translations: [:locale, :title, :body]])
   end
-```
+~~~
 
 As this will call `translations=(data)` on Page instance, I created this method:
 
-```ruby
+~~~ruby
 class Page < ActiveRecord::Base
   translates :title, :body
   globalize_accessors
@@ -86,13 +93,13 @@ class Page < ActiveRecord::Base
   end
 end
 
-```
+~~~
 
 That's it.
 
 According the schema, the PATCH (or POST) request would be:
 
-```json
+~~~json
 {
     "data": {
         "type": "pages",
@@ -118,4 +125,4 @@ According the schema, the PATCH (or POST) request would be:
         }
     }
 }
-```
+~~~
