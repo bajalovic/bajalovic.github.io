@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>JSON API Multi Lang Support</title>
-	  <link>/blog//json-api-multilang</link>
+	  <link>/json-api-multilang</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-06T03:00:02+01:00</pubDate>
-	  <guid>/blog//json-api-multilang</guid>
+	  <guid>/json-api-multilang</guid>
 	  <description><![CDATA[
 	     <p>I started using <code>jsonapi-resources</code> gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/</p>
 

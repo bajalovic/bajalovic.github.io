@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description>Personal blog</description>
-    <link>http://esseworks.com/blog//</link>
-    <atom:link href="http://esseworks.com/blog//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Nov 2015 03:18:00 +0100</pubDate>
-    <lastBuildDate>Fri, 06 Nov 2015 03:18:00 +0100</lastBuildDate>
+    <link>http://esseworks.com/</link>
+    <atom:link href="http://esseworks.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 06 Nov 2015 03:48:08 +0100</pubDate>
+    <lastBuildDate>Fri, 06 Nov 2015 03:48:08 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -116,8 +116,8 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Fri, 06 Nov 2015 03:00:02 +0100</pubDate>
-        <link>http://esseworks.com/blog//json-api-multilang</link>
-        <guid isPermaLink="true">http://esseworks.com/blog//json-api-multilang</guid>
+        <link>http://esseworks.com/json-api-multilang</link>
+        <guid isPermaLink="true">http://esseworks.com/json-api-multilang</guid>
         
         <category>json</category>
         

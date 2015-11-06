@@ -1,6 +1,5 @@
 ---
 layout: post
-cover: 'assets/images/cover4.jpg'
 title:  "JSON API Multi Lang Support"
 date:   2015-11-06 02:00:02
 tags: json jsonapi rails i18n

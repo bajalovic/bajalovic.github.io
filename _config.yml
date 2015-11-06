@@ -8,7 +8,7 @@ username: bajalovic
 bio: 'Partner at EsseWorks'
 location: 'Belgrade, Serbia'
 url: 'http://esseworks.com'
-image: 'assets/images/me.jpg'
+image: '/assets/images/me.jpg'
 
 # Jykell configuration
 markdown: redcarpet
