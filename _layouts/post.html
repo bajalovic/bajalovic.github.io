@@ -1,11 +1,13 @@
 ---
 layout: default
-logo: '/assets/images/esseworks.png'
-cover: '/assets/images/cover4.jpg'
+logo: /assets/images/esseworks.png
+cover: /assets/images/cover4.jpg
 disqus: false
 navigation: false
-class: 'post-template'
+class: "post-template"
+published: true
 ---
+
 <!-- < default -->
 
 <!-- The comment above "< default" means - insert everything in this file into -->
@@ -54,7 +56,7 @@ class: 'post-template'
 
             {% if site.image %}
             <figure class="author-image">
-                <a class="img" href="{{ site.baseurl }}/author/{{ site.username }}" style="background-image: url({{ site.baseurl }}{{ site.image }})"><span class="hidden">{{ page.author }}'s Picture</span></a>
+                <a class="img" href="{{ site.baseurl }}/" style="background-image: url({{ site.baseurl }}{{ site.image }})"><span class="hidden">{{ page.author }}'s Picture</span></a>
             </figure>
             {% endif %}
 
