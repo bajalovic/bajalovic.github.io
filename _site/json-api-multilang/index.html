@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>JSON API Multi Lang Support</title>
+    <meta name="description" content="Ivan Bajalović - Personal blog" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="/page2/" />
+
+    <meta property="og:site_name" content="Ivan Bajalović" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ivan Bajalović" />
+    <meta property="og:description" content="Personal blog" />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/assets/images/cover1.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ivan Bajalović" />
+    <meta name="twitter:description" content="Personal blog" />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image:src" content="/assets/images/cover1.jpg" />
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Finding The Way Home",
+    "url": "/",
+    "image": "/assets/images/cover1.jpg",
+    "description": "Personal blog"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Ivan Bajalović" href="/rss.xml" />
+
+</head>
+<body class="post-template nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+<header class="main-header post-head " style="background-image: url(/assets/images/cover4.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/esseworks.png" alt="Blog Logo" /></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-fiction">
+
+        <header class="post-header">
+            <h1 class="post-title">JSON API Multi Lang Support</h1>
+            <section class="post-meta">
+            <time class="post-date" datetime="2015-11-06">06 Nov 2015</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/json'>Json</a>,
+                       
+                
+                    
+                       <a href='/tag/jsonapi'>Jsonapi</a>,
+                       
+                
+                    
+                       <a href='/tag/rails'>Rails</a>,
+                       
+                
+                    
+                       <a href='/tag/i18n'>I18n</a>
+                       
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+            
+            <p>I started using <code>jsonapi-resources</code> gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/</p>
+
+<p>I encountered the issue with multi-lang support. </p>
+
+<p>In my Ruby on Rails project I am using <code>globalize</code> gem for multilang model attribute translations.</p>
+
+<p>I started using <code>globalize-accessors</code> gem as well, as they provide getters and setters for translated fields.</p>
+
+<p>This is the JSON response for </p>
+
+<p><strong>GET /api/v1/pages/8</strong></p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pages&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/pages/8&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;testing-translations&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;en&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Translations&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;strong&gt;Lorem&lt;/strong&gt; ipsum dolor sit amet&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;de&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Übersetzungen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;fr&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Essais Traductions&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>I defined PageResource  as</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">attributes</span> <span class="ss">:slug</span><span class="p">,</span> <span class="ss">:translations</span>
+
+<span class="k">def</span> <span class="nf">translations</span>
+    <span class="n">translations</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="no">Page</span><span class="o">.</span><span class="n">globalize_locales</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">locale</span><span class="o">|</span>
+      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">unless</span> <span class="n">translations</span><span class="o">.</span><span class="n">has_key?</span> <span class="n">locale</span>
+
+      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span> <span class="s2">&quot;title_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">][</span><span class="s2">&quot;body&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span> <span class="s2">&quot;body_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">end</span>
+    <span class="n">translations</span>
+  <span class="k">end</span>
+</code></pre></div>
+<p>This will generate a flatten relationship output. </p>
+
+<p>In order to update translations in same manner, I had to enable translations through the strong parameters</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">page_params</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:data</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">attributes</span><span class="p">:</span> <span class="o">[</span><span class="ss">:slug</span><span class="p">,</span> <span class="ss">translations</span><span class="p">:</span> <span class="o">[</span><span class="ss">:locale</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:body</span><span class="o">]]</span><span class="p">)</span>
+  <span class="k">end</span>
+</code></pre></div>
+<p>As this will call <code>translations=(data)</code> on Page instance, I created this method:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Page</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">translates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:body</span>
+  <span class="n">globalize_accessors</span>
+
+  <span class="n">validates</span> <span class="ss">:slug</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
+
+  <span class="k">def</span> <span class="nf">translations</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">o</span><span class="o">|</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;title_</span><span class="si">#{</span><span class="n">o</span><span class="o">[</span><span class="ss">:locale</span><span class="o">]</span><span class="si">}</span><span class="s2">=&quot;</span><span class="p">,</span> <span class="n">o</span><span class="o">[</span><span class="ss">:title</span><span class="o">]</span><span class="p">)</span> <span class="k">unless</span> <span class="n">o</span><span class="o">[</span><span class="ss">:title</span><span class="o">].</span><span class="n">blank?</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;body_</span><span class="si">#{</span><span class="n">o</span><span class="o">[</span><span class="ss">:locale</span><span class="o">]</span><span class="si">}</span><span class="s2">=&quot;</span><span class="p">,</span> <span class="n">o</span><span class="o">[</span><span class="ss">:body</span><span class="o">]</span><span class="p">)</span> <span class="k">unless</span> <span class="n">o</span><span class="o">[</span><span class="ss">:body</span><span class="o">].</span><span class="n">blank?</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>That&#39;s it.</p>
+
+<p>According the schema, the PATCH (or POST) request would be:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pages&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;test-ing&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Translations&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Lorem ipsum dolor sit amet&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Übersetzungen&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Einige Blindtext sollte hier gehen&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;fr&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Essais Traductions&quot;</span>
+                    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Certains faux texte devrait aller ici&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+        </section>
+
+        <footer class="post-footer">
+
+            
+            <figure class="author-image">
+                <a class="img" href="/" style="background-image: url(/assets/images/me.jpg)"><span class="hidden">'s Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4>Ivan Bajalović</h4>
+                <div class="author-meta">
+                    <span class="author-location icon-location"> Belgrade, Serbia</span> 
+                    <span class="author-link icon-link"><a href="http://esseworks.com"> bajalovic.github.io/</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=JSON API Multi Lang Support&amp;url=http://esseworks.com/json-api-multilang"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://esseworks.com/json-api-multilang"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://esseworks.com/json-api-multilang"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Ivan Bajalović</a> &copy; 2015</section>
+          <section class="poweredby">Proudly published with <a href="http://jekyllrb.com/">Jekyll</a> using <a href="http://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+</body>
+</html>

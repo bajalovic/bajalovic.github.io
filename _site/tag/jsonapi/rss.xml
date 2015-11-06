@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>bajalovic.github.io/</title>
+   
+   <link>http://esseworks.com</link>
+   <description>Personal blog</description>
+   <language>en-uk</language>
+   <managingEditor> Ivan Bajalović</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>JSON API Multi Lang Support</title>
+	  <link>//json-api-multilang</link>
+	  <author>Ivan Bajalović</author>
+	  <pubDate>2015-11-06T03:00:02+01:00</pubDate>
+	  <guid>//json-api-multilang</guid>
+	  <description><![CDATA[
+	     <p>I started using <code>jsonapi-resources</code> gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/</p>
+
+<p>I encountered the issue with multi-lang support. </p>
+
+<p>In my Ruby on Rails project I am using <code>globalize</code> gem for multilang model attribute translations.</p>
+
+<p>I started using <code>globalize-accessors</code> gem as well, as they provide getters and setters for translated fields.</p>
+
+<p>This is the JSON response for </p>
+
+<p><strong>GET /api/v1/pages/8</strong></p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pages&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v1/pages/8&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;testing-translations&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;en&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Translations&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;strong&gt;Lorem&lt;/strong&gt; ipsum dolor sit amet&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;de&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Übersetzungen&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;fr&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Essais Traductions&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>I defined PageResource  as</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">attributes</span> <span class="ss">:slug</span><span class="p">,</span> <span class="ss">:translations</span>
+
+<span class="k">def</span> <span class="nf">translations</span>
+    <span class="n">translations</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="no">Page</span><span class="o">.</span><span class="n">globalize_locales</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">locale</span><span class="o">|</span>
+      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">unless</span> <span class="n">translations</span><span class="o">.</span><span class="n">has_key?</span> <span class="n">locale</span>
+
+      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span> <span class="s2">&quot;title_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">][</span><span class="s2">&quot;body&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span> <span class="s2">&quot;body_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">end</span>
+    <span class="n">translations</span>
+  <span class="k">end</span>
+</code></pre></div>
+<p>This will generate a flatten relationship output. </p>
+
+<p>In order to update translations in same manner, I had to enable translations through the strong parameters</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">page_params</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:data</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">attributes</span><span class="p">:</span> <span class="o">[</span><span class="ss">:slug</span><span class="p">,</span> <span class="ss">translations</span><span class="p">:</span> <span class="o">[</span><span class="ss">:locale</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:body</span><span class="o">]]</span><span class="p">)</span>
+  <span class="k">end</span>
+</code></pre></div>
+<p>As this will call <code>translations=(data)</code> on Page instance, I created this method:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Page</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">translates</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:body</span>
+  <span class="n">globalize_accessors</span>
+
+  <span class="n">validates</span> <span class="ss">:slug</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span>
+
+  <span class="k">def</span> <span class="nf">translations</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">o</span><span class="o">|</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;title_</span><span class="si">#{</span><span class="n">o</span><span class="o">[</span><span class="ss">:locale</span><span class="o">]</span><span class="si">}</span><span class="s2">=&quot;</span><span class="p">,</span> <span class="n">o</span><span class="o">[</span><span class="ss">:title</span><span class="o">]</span><span class="p">)</span> <span class="k">unless</span> <span class="n">o</span><span class="o">[</span><span class="ss">:title</span><span class="o">].</span><span class="n">blank?</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;body_</span><span class="si">#{</span><span class="n">o</span><span class="o">[</span><span class="ss">:locale</span><span class="o">]</span><span class="si">}</span><span class="s2">=&quot;</span><span class="p">,</span> <span class="n">o</span><span class="o">[</span><span class="ss">:body</span><span class="o">]</span><span class="p">)</span> <span class="k">unless</span> <span class="n">o</span><span class="o">[</span><span class="ss">:body</span><span class="o">].</span><span class="n">blank?</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>That&#39;s it.</p>
+
+<p>According the schema, the PATCH (or POST) request would be:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pages&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;test-ing&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Translations&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Lorem ipsum dolor sit amet&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Übersetzungen&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Einige Blindtext sollte hier gehen&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;fr&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Essais Traductions&quot;</span>
+                    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Certains faux texte devrait aller ici&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>
