@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Ivan Bajalović</title>
+    <title>Author</title>
     <meta name="description" content="Ivan Bajalović - Personal blog" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -52,7 +52,7 @@
     <link rel="alternate" type="application/rss+xml" title="Ivan Bajalović" href="/blog/rss.xml" />
 
 </head>
-<body class="tag-template nav-closed">
+<body class="author-template nav-closed">
 
     
 
@@ -62,28 +62,40 @@
         <!-- < default}} -->
 <!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
 
-<!-- If we have a tag cover, display that - else blog cover - else nothing -->
-<header class="main-header tag-head " style="background-image: url(/blog/assets/images/cover4.jpg) ">
-    <nav class="main-nav overlay clearfix">
-        <a class="blog-logo" href="/blog/"><img src="/blog/assets/images/esseworks.png" alt="Blog Logo" /></a>
+<!-- The big featured header -->
+
+<!-- Everything inside the #author tags pulls data from the author -->
+<!-- #author  -->
+    <header class="main-header author-head " style="background-image: url(/blog/assets/images/cover4.jpg) ">
+        <nav class="main-nav overlay clearfix">
+            <a class="blog-logo" href="/blog/"><img src="/blog/assets/images/esseworks.png" alt="Blog Logo" /></a>
+            
+        </nav>
+    </header>
+
+    <section class="author-profile inner">
         
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">I18n</h1>
-            <h2 class="page-description">
-            
-			    A 1-post collection
-            
-            </h2>
+        <figure class="author-image">
+            <div class="img" style="background-image: url(/blog/assets/images/me.jpg)"><span class="hidden">Ivan Bajalović's Picture</span></div>
+        </figure>
+        
+        <h1 class="author-title">Ivan Bajalović</h1>
+        
+            <h2 class="author-bio">Partner at EsseWorks</h2>
+        
+        <div class="author-meta">
+            <span class="author-location icon-location">Belgrade, Serbia</span>
+            <span class="author-link icon-link"><a href="http://esseworks.com">bajalovic.github.io</a></span>
+            <!-- <span class="author-stats"><i class="icon-stats"></i> [[plural ../pagination.total empty='No posts' singular='% post' plural='% posts']]</span> -->
+            <span class="author-stats"><i class="icon-stats"></i>1 post</span>
         </div>
-    </div>
-</header>
+    </section>
+<!-- /author -->
 
 <!-- The main content area on the homepage -->
 <main id="content" class="content" role="main">
 
-    <!-- The tag below includes the post loop - partials/loop.hbs -->
+    <!-- The tag below includes the post loop - partials/loop.hbs  -->
         <!-- Previous/next page links - only displayed on page 2+ -->
     <div class="extra-pagination inner">
         
@@ -145,6 +157,7 @@
 
 
 </main>
+
 
         <footer class="site-footer clearfix">
           <section class="copyright"><a href="/blog/">Ivan Bajalović</a> &copy; 2015</section>
