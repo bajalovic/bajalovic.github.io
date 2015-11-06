@@ -1,12 +1,13 @@
 ---
 layout: post
 title: JSON API Multi Lang Support
-date: 2015-11-06 11:18
+date: "2015-11-06 11:18"
 tags: json jsonapi rails i18n
-subclass: "post tag-fiction"
+subclass: post
 category: bajalovic
 published: true
 ---
+
 
 
 I started using `jsonapi-resources` gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/
