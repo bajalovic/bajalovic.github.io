@@ -8,16 +8,16 @@
     <title>Ivan Bajalović</title>
     <link>http://esseworks.com</link>
     <description>Personal blog</description>
-    <pubDate>Fri, 06 Nov 2015 03:00:02 +0100</pubDate>
+    <pubDate>Fri, 06 Nov 2015 11:18:00 +0100</pubDate>
     <item>
       <title>JSON API Multi Lang Support</title>
       <link>http://esseworks.com/json-api-multilang</link>
       <description>I started using `jsonapi-resources` gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/
 
 </description>
-      <pubDate>Fri, 06 Nov 2015 03:00:02 +0100</pubDate>
-      <dc:date>2015-11-06T03:00:02+01:00</dc:date>
+      <pubDate>Fri, 06 Nov 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-11-06T11:18:00+01:00</dc:date>
     </item>
-    <dc:date>2015-11-06T03:00:02+01:00</dc:date>
+    <dc:date>2015-11-06T11:18:00+01:00</dc:date>
   </channel>
 </rss>

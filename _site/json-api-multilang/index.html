@@ -127,23 +127,26 @@
     <span class="p">},</span>
     <span class="nt">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;testing-translations&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;en&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
           <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Translations&quot;</span><span class="p">,</span>
           <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;strong&gt;Lorem&lt;/strong&gt; ipsum dolor sit amet&quot;</span>
         <span class="p">},</span>
-        <span class="nt">&quot;de&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;de&quot;</span><span class="p">,</span>
           <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Testing Übersetzungen&quot;</span><span class="p">,</span>
           <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="kc">null</span>
         <span class="p">},</span>
-        <span class="nt">&quot;fr&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;fr&quot;</span><span class="p">,</span>
           <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Essais Traductions&quot;</span><span class="p">,</span>
           <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="kc">null</span>
         <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+      <span class="err">}</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
 </code></pre></div>
 <p>I defined PageResource  as</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">attributes</span> <span class="ss">:slug</span><span class="p">,</span> <span class="ss">:translations</span>
@@ -151,10 +154,11 @@
 <span class="k">def</span> <span class="nf">translations</span>
     <span class="n">translations</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="no">Page</span><span class="o">.</span><span class="n">globalize_locales</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">locale</span><span class="o">|</span>
-      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">unless</span> <span class="n">translations</span><span class="o">.</span><span class="n">has_key?</span> <span class="n">locale</span>
-
-      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">][</span><span class="s2">&quot;title&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span> <span class="s2">&quot;title_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span>
-      <span class="n">translations</span><span class="o">[</span><span class="n">locale</span><span class="o">][</span><span class="s2">&quot;body&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span> <span class="s2">&quot;body_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span>
+      <span class="n">translations</span> <span class="o">&lt;&lt;</span>  <span class="p">{</span>
+          <span class="ss">locale</span><span class="p">:</span> <span class="n">locale</span><span class="p">,</span>
+          <span class="ss">title</span><span class="p">:</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;title_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+          <span class="ss">body</span><span class="p">:</span> <span class="vi">@model</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;body_</span><span class="si">#{</span><span class="n">locale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="p">}</span>
     <span class="k">end</span>
     <span class="n">translations</span>
   <span class="k">end</span>
@@ -184,7 +188,7 @@
 </code></pre></div>
 <p>That&#39;s it.</p>
 
-<p>According the schema, the PATCH (or POST) request would be:</p>
+<p>According to the schema, the PATCH (or POST) request would be:</p>
 <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pages&quot;</span><span class="p">,</span>
@@ -218,7 +222,7 @@
 
             
             <figure class="author-image">
-                <a class="img" href="/author/bajalovic" style="background-image: url(/assets/images/me.jpg)"><span class="hidden">'s Picture</span></a>
+                <a class="img" href="/" style="background-image: url(/assets/images/me.jpg)"><span class="hidden">'s Picture</span></a>
             </figure>
             
 
