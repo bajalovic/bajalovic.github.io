@@ -8,6 +8,7 @@ username: bajalovic
 bio: 'Partner at EsseWorks'
 location: 'Belgrade, Serbia'
 url: 'http://esseworks.com'
+blog_url: 'https://bajalovic.github.io'
 image: '/assets/images/me.jpg'
 
 # Jykell configuration
