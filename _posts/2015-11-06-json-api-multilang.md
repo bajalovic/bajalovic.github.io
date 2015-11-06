@@ -1,11 +1,13 @@
 ---
 layout: post
-title:  "JSON API Multi Lang Support"
-date:   2015-11-06 02:00:02
+title: JSON API Multi Lang Support
+date: {}
 tags: json jsonapi rails i18n
-subclass: 'post tag-fiction'
-category: 'bajalovic'
+subclass: "post tag-fiction"
+category: bajalovic
+published: true
 ---
+
 
 I started using `jsonapi-resources` gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/
 
@@ -29,16 +31,19 @@ This is the JSON response for
     },
     "attributes": {
       "slug": "testing-translations",
-      "translations": {
-        "en": {
+      "translations": [
+        {
+          "locale": "en",
           "title": "Testing Translations",
           "body": "<strong>Lorem</strong> ipsum dolor sit amet"
         },
-        "de": {
+        {
+          "locale": "de",
           "title": "Testing Übersetzungen",
           "body": null
         },
-        "fr": {
+        {
+          "locale": "fr",
           "title": "Essais Traductions",
           "body": null
         }
@@ -56,10 +61,11 @@ attributes :slug, :translations
 def translations
     translations = {}
     Page.globalize_locales.each do |locale|
-      translations[locale] = {} unless translations.has_key? locale
-
-      translations[locale]["title"] = @model.send "title_#{locale}"
-      translations[locale]["body"] = @model.send "body_#{locale}"
+      translations <<  {
+          locale: locale,
+          title: @model.send("title_#{locale}"),
+          body: @model.send("body_#{locale}")
+      }
     end
     translations
   end
@@ -97,7 +103,7 @@ end
 
 That's it.
 
-According the schema, the PATCH (or POST) request would be:
+According to the schema, the PATCH (or POST) request would be:
 
 ~~~json
 {
