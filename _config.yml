@@ -16,7 +16,7 @@ highlighter: pygments
 paginate: 5
 language: 'en-uk'
 short_url: 'bajalovic.github.io'
-google_analytics: 
+google_analytics: UA-69788637-1
 disqus: 
 baseurl: ''
 
