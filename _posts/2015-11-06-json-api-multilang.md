@@ -1,7 +1,7 @@
 ---
 layout: post
 title: JSON API Multi Lang Support
-date: {}
+date: 2015-11-06 11:18
 tags: json jsonapi rails i18n
 subclass: "post tag-fiction"
 category: bajalovic
