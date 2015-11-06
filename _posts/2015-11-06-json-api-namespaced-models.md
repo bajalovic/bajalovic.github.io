@@ -8,7 +8,11 @@ category: bajalovic
 ---
 
 
-I have a model at `app/models/weather/alert.rb`, and I created a resource at `app/resources/api/v1/weather_alert_resource.rb`.
+If you want to have a resource that needs access to a namespaced model, you can overwrite the `resource_type_for(model)` method from `JSONAPI::Resource` module.
+
+For example, I have a model placed at `app/models/weather/alert.rb`, and I created a resource at `app/resources/api/v1/weather_alert_resource.rb`.
+
+Note that resource is not namespaced.
 
 I extended the `resource_type_for(model)` in my `WeatherAlertResource` like this:
 
