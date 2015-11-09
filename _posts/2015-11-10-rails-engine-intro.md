@@ -13,7 +13,7 @@ I needed to create an independent part on my previous project, and it should not
 
 Then I remembered, Rails engine will do the trick. It works as a gem, that you can use inside your app, by requiring it in `Gemfile`.
 
-~~~shell
+~~~
 $ cd myapp
 $ rails plugin new admin --mountable
 ~~~
