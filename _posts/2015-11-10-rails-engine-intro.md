@@ -48,3 +48,13 @@ class Admin::WelcomeController < Admin::ApplicationController
 end
 ~~~
 
+and appropriate view located at `myapp/admin/app/views/admin/welcome/index.html.erb`.
+
+~~~ruby
+<h1>Hello World!</h1>
+~~~
+
+Start the server with `rails s` inside `myapp` directory, and open `http://localhost:3000/admin/`. If everything went ok, you should see "Hello World!" message.
+
+You can define models for a engine itself, or you can access the ones from the hosting app. For more and for further reading, please read [Getting Started with Engines](http://guides.rubyonrails.org/engines.html).
+
