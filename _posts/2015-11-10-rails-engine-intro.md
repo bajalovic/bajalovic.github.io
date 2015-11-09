@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 date: "2015-11-10 00:38"
 tags: rails namespace engine
