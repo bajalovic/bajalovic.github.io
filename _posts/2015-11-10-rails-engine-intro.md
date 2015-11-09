@@ -27,3 +27,11 @@ Next, open your `Gemfile` and add:
 ~~~
 gem 'blog', path: 'blog'
 ~~~
+
+This will load your plugin as a gem. Now, we need to tell the router which url to point to our plugin.
+
+~~~ruby
+mount Blog::Engine, at: "/blog/"
+~~~
+
+Run `bundle install` and then `rails s` and try to open `http://localhost:3000/blog/`
