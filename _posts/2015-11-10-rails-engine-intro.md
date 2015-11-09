@@ -15,23 +15,36 @@ Then I remembered, Rails engine will do the trick. It works as a gem, that you c
 
 ~~~shell
 $ cd myapp
-$ rails plugin new blog --mountable
+$ rails plugin new admin --mountable
 ~~~
 
-This will generate a `blog/` directory inside your `myapp` directory. It will contain `app`, `bin`, `config`, `lib`, `test` folders and `Gemfile`, `Rakefile` and `blog.gemspec`.
+This will generate a `admin/` directory inside your `myapp` directory. It will contain `app`, `bin`, `config`, `lib`, `test` folders and `Gemfile`, `Rakefile` and `admin.gemspec`.
 
 Edit your gemspec file.
 
 Next, open your `Gemfile` and add:
 
 ~~~
-gem 'blog', path: 'blog'
+gem 'admin', path: 'admin'
 ~~~
 
-This will load your plugin as a gem. Now, we need to tell the router which url to point to our plugin.
+This will load your plugin as a gem. Now, we need to tell the router which url to point to our plugin. Run `bundle install`.
 
 ~~~ruby
-mount Blog::Engine, at: "/blog/"
+mount Admin::Engine, at: "/admin/"
 ~~~
 
-Run `bundle install` and then `rails s` and try to open `http://localhost:3000/blog/`
+If you want to use some external gems, you should define them in `myapp/admin/Gemfile` and add a dependency in `myapp/admin/admin.gemspec`.
+
+Do not forget to run `bundle install` after these changes.
+
+Lets create `welcome_controller.rb` inside the `myapp/admin/app/controllers/admin/welcome_controller.rb`. 
+
+~~~ruby
+class Admin::WelcomeController < Admin::ApplicationController
+
+	def index
+    end
+end
+~~~
+
