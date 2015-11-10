@@ -7,6 +7,7 @@ subclass: post
 category: bajalovic
 ---
 
+
 You probably already used a lot of gems that are actually a rails engine, e.g. `ActiveAdmin`, `Devise`, `Forem`, `Spree`, ...
 
 I needed to create an independent part on my previous project, and it should not share the resources with the rest of the project. Initially, I thoght to create just a namespace, put controllers, views inside and use it like that. But then, I noticed that I should separate my assets, so this subproject do not load unnecessary javascript/css files. 
@@ -20,7 +21,7 @@ $ rails plugin new admin --mountable
 
 This will generate a `admin/` directory inside your `myapp` directory. It will contain `app`, `bin`, `config`, `lib`, `test` folders and `Gemfile`, `Rakefile` and `admin.gemspec`.
 
-Edit your gemspec file.
+Edit your gemspec file. Initially, you will have "TODO" texts. In order to run `bundle install` you must remove "TODO" or "FIXME" form gemspec file.
 
 Next, open your `Gemfile` and add:
 
@@ -54,7 +55,14 @@ and appropriate view located at `myapp/admin/app/views/admin/welcome/index.html.
 <h1>Hello World!</h1>
 ~~~
 
+Open `myapp/admin/config/routes.rb` and set root:
+
+~~~ruby
+Admin::Engine.routes.draw do
+  root 'welcome#index'
+end
+~~~
+
 Start the server with `rails s` inside `myapp` directory, and open `http://localhost:3000/admin/`. If everything went ok, you should see "Hello World!" message.
 
 You can define models for a engine itself, or you can access the ones from the hosting app. For more and for further reading, please read [Getting Started with Engines](http://guides.rubyonrails.org/engines.html).
-
