@@ -35,10 +35,6 @@ This will load your plugin as a gem. Now, we need to tell the router which url t
 mount Admin::Engine, at: "/admin/"
 ~~~
 
-If you want to use some external gems, you should define them in `myapp/admin/Gemfile` and add a dependency in `myapp/admin/admin.gemspec`.
-
-Do not forget to run `bundle install` after these changes.
-
 Lets create `welcome_controller.rb` inside the `myapp/admin/app/controllers/admin/welcome_controller.rb`. 
 
 ~~~ruby
@@ -65,4 +61,20 @@ end
 
 Start the server with `rails s` inside `myapp` directory, and open `http://localhost:3000/admin/`. If everything went ok, you should see "Hello World!" message.
 
-You can define models for a engine itself, or you can access the ones from the hosting app. For more and for further reading, please read [Getting Started with Engines](http://guides.rubyonrails.org/engines.html).
+You can define models for a engine itself, or you can access the ones from the hosting app.
+
+If you want to use some external gems, you should add a dependency in `myapp/admin/admin.gemspec`.
+
+~~~ruby
+s.add_dependency 'gem_you_want_to_include'
+~~~
+
+And then, you need to require it in `myapp/admin/lib/admin/engine.rb` 
+
+~~~ruby
+require 'gem_you_want_to_include'
+~~~
+
+Do not forget to run `bundle install` after these changes.
+
+For further reading, please read [Getting Started with Engines](http://guides.rubyonrails.org/engines.html).
