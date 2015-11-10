@@ -7,7 +7,10 @@ subclass: post
 category: bajalovic
 ---
 
-Humanize seconds helper
+
+This is a little helper that can I use for string representation of a seconds. It will say how many days, hours, minutes or seconds there is in a input value.
+
+### Humanize seconds helper
 
 ~~~ruby
     def humanize_seconds secs, full = false
