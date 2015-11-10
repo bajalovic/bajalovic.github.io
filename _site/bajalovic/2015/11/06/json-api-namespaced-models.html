@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Humanize Seconds</title>
+    <title>Json Api Namespaced Models</title>
     <meta name="description" content="Ivan Bajalović - Personal blog" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -94,19 +94,27 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">Humanize Seconds</h1>
+            <h1 class="post-title">Json Api Namespaced Models</h1>
             <section class="post-meta">
-            <time class="post-date" datetime="2015-11-10">10 Nov 2015</time>
+            <time class="post-date" datetime="2015-11-06">06 Nov 2015</time>
                 <!-- [[tags prefix=" on "]] -->
                  
                 on 
+                
+                    
+                       <a href='/tag/json'>Json</a>,
+                       
+                
+                    
+                       <a href='/tag/jsonapi'>Jsonapi</a>,
+                       
                 
                     
                        <a href='/tag/rails'>Rails</a>,
                        
                 
                     
-                       <a href='/tag/helper'>Helper</a>
+                       <a href='/tag/namespace'>Namespace</a>
                        
                 
                 
@@ -115,40 +123,25 @@
 
         <section class="post-content">
             
-            <p>This is a little helper that can I use for string representation of a seconds. It will say how many days, hours, minutes or seconds there is in a input value.</p>
+            <p>If you want to have a resource that needs access to a namespaced model, you can overwrite the <code>resource_type_for(model)</code> method from <code>JSONAPI::Resource</code> module.</p>
 
-<h3>Humanize seconds helper</h3>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="k">def</span> <span class="nf">humanize_seconds</span> <span class="n">secs</span><span class="p">,</span> <span class="n">full</span> <span class="o">=</span> <span class="kp">false</span>
-      <span class="o">[[</span><span class="mi">60</span><span class="p">,</span> <span class="ss">:seconds</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">60</span><span class="p">,</span> <span class="ss">:minutes</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">24</span><span class="p">,</span> <span class="ss">:hours</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">1000</span><span class="p">,</span> <span class="ss">:days</span><span class="o">]].</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">count</span><span class="p">,</span> <span class="nb">name</span><span class="o">|</span>
-        <span class="k">if</span> <span class="n">secs</span> <span class="o">&gt;</span> <span class="mi">0</span>
-          <span class="n">secs</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">secs</span><span class="o">.</span><span class="n">divmod</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-          <span class="n">trans</span> <span class="o">=</span> <span class="nb">name</span>
-          <span class="n">trans</span> <span class="o">=</span> <span class="n">full</span> <span class="p">?</span> <span class="s2">&quot; </span><span class="si">#{</span><span class="no">I18n</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="s2">&quot;global.time.</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">:</span> <span class="no">I18n</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="s2">&quot;global.time.short.</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-          <span class="s2">&quot;</span><span class="si">#{</span><span class="n">n</span><span class="o">.</span><span class="n">to_i</span><span class="si">}#{</span><span class="n">trans</span><span class="si">}</span><span class="s2">&quot;</span>
+<p>For example, I have a model placed at <code>app/models/weather/alert.rb</code>, and I created a resource at <code>app/resources/api/v1/weather_alert_resource.rb</code>.</p>
+
+<p>Note that resource is not namespaced.</p>
+
+<p>I extended the <code>resource_type_for(model)</code> in my <code>WeatherAlertResource</code> like this:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="k">class</span> <span class="nc">Api</span><span class="o">::</span><span class="no">V1</span><span class="o">::</span><span class="no">WeatherAlertResource</span> <span class="o">&lt;</span> <span class="no">JSONAPI</span><span class="o">::</span><span class="no">Resource</span>
+      <span class="n">attributes</span> <span class="ss">:country</span><span class="p">,</span> <span class="ss">:town</span><span class="p">,</span> <span class="ss">:from</span><span class="p">,</span> <span class="ss">:expires</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:alert_type</span>
+      <span class="n">model_name</span> <span class="s1">&#39;Weather::Alert&#39;</span>
+
+      <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+        <span class="k">def</span> <span class="nf">resource_type_for</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+          <span class="s1">&#39;api/v1/weather_alert&#39;</span>
         <span class="k">end</span>
-      <span class="p">}</span><span class="o">.</span><span class="n">compact</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+      <span class="k">end</span>
     <span class="k">end</span>
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">   en:
-     time:
-      seconds: &quot;seconds&quot;
-      minutes: &quot;minutes&quot;
-      hours: &quot;hours&quot;
-      days: &quot;days&quot;
-      short:
-        seconds: &quot;s&quot;
-        minutes: &quot;m&quot;
-        hours: &quot;h&quot;
-        days: &quot;d&quot;
 </code></pre></div>
-<p>Use it like this </p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;%=</span> <span class="n">humanize</span> <span class="mi">343</span> <span class="o">%&gt;</span>
-</code></pre></div>
-<p>and you should get <code>5m 43s</code>. Or, </p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;%=</span> <span class="n">humanize</span> <span class="mi">343</span><span class="p">,</span> <span class="kp">true</span> <span class="o">%&gt;</span>
-</code></pre></div>
-<p>and you should get <code>5 minutes 43 seconds</code>.</p>
-
-<p>Enjoy.</p>
+<p>and now I can make a <code>GET /api/v1/weather_alerts</code> and everything works fine.</p>
 
 
         </section>
@@ -173,15 +166,15 @@
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="http://twitter.com/share?text=Humanize Seconds&amp;url=https://bajalovic.github.io/humanize-seconds"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Json Api Namespaced Models&amp;url=https://bajalovic.github.io/bajalovic/2015/11/06/json-api-namespaced-models.html"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://bajalovic.github.io/humanize-seconds"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://bajalovic.github.io/bajalovic/2015/11/06/json-api-namespaced-models.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://bajalovic.github.io/humanize-seconds"
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://bajalovic.github.io/bajalovic/2015/11/06/json-api-namespaced-models.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
@@ -191,8 +184,8 @@
 <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = "bajalovicgithubio"; // required: replace example with your forum shortname
-        var disqus_identifier = '/humanize-seconds';
-        var disqus_url = 'http://esseworks.com/humanize-seconds';
+        var disqus_identifier = '/bajalovic/2015/11/06/json-api-namespaced-models.html';
+        var disqus_url = 'http://esseworks.com/bajalovic/2015/11/06/json-api-namespaced-models.html';
  
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
@@ -215,13 +208,20 @@
 
     <!-- [[! next_post ]] -->
     
+        <a class="read-next-story no-cover" href="/bajalovic/2015/11/10/rails-engine-intro.html">
+            <section class="post">
+                <h2>Rails Engine Intro</h2>
+                <p>You probably already used a lot of gems that are actually a rails engine, e.g....</p>
+            </section>
+        </a>
+    
     <!-- [[! /next_post ]] -->
     <!-- [[! prev_post ]] -->
     
-        <a class="read-next-story prev no-cover" href="/rails-engine-intro">
+        <a class="read-next-story prev no-cover" href="/bajalovic/2015/11/06/json-api-multilang.html">
             <section class="post">
-                <h2>Rails Engine Intro</h2>
-                <p><p>You probably already used a lot of gems that are actually a rails engine, e.g....</p>
+                <h2>JSON API Multi Lang Support</h2>
+                <p><p>I started using <code>jsonapi-resources</code> gem in order to create a JSON API according to JSON...</p>
             </section>
         </a>
     

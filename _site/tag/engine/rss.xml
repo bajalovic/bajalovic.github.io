@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>Rails Engine Intro</title>
-	  <link>/rails-engine-intro</link>
+	  <link>/bajalovic/2015/11/10/rails-engine-intro.html</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-10T00:38:00+01:00</pubDate>
-	  <guid>/rails-engine-intro</guid>
+	  <guid>/bajalovic/2015/11/10/rails-engine-intro.html</guid>
 	  <description><![CDATA[
 	     <p>You probably already used a lot of gems that are actually a rails engine, e.g. <code>ActiveAdmin</code>, <code>Devise</code>, <code>Forem</code>, <code>Spree</code>, ...</p>
 

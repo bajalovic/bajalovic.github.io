@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>Humanize Seconds</title>
-	  <link>/humanize-seconds</link>
+	  <link>/bajalovic/2015/11/10/humanize-seconds.html</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-10T10:11:00+01:00</pubDate>
-	  <guid>/humanize-seconds</guid>
+	  <guid>/bajalovic/2015/11/10/humanize-seconds.html</guid>
 	  <description><![CDATA[
 	     <p>This is a little helper that can I use for string representation of a seconds. It will say how many days, hours, minutes or seconds there is in a input value.</p>
 

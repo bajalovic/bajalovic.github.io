@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://esseworks.com/</link>
     <atom:link href="http://esseworks.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 10 Nov 2015 11:04:56 +0100</pubDate>
-    <lastBuildDate>Tue, 10 Nov 2015 11:04:56 +0100</lastBuildDate>
+    <pubDate>Tue, 10 Nov 2015 11:25:03 +0100</pubDate>
+    <lastBuildDate>Tue, 10 Nov 2015 11:25:03 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -47,8 +47,8 @@
 &lt;p&gt;Enjoy.&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Nov 2015 10:11:00 +0100</pubDate>
-        <link>http://esseworks.com/humanize-seconds</link>
-        <guid isPermaLink="true">http://esseworks.com/humanize-seconds</guid>
+        <link>http://esseworks.com/bajalovic/2015/11/10/humanize-seconds.html</link>
+        <guid isPermaLink="true">http://esseworks.com/bajalovic/2015/11/10/humanize-seconds.html</guid>
         
         <category>rails</category>
         
@@ -109,8 +109,8 @@ $ rails plugin new admin --mountable
 &lt;p&gt;For further reading, please read &lt;a href=&quot;http://guides.rubyonrails.org/engines.html&quot;&gt;Getting Started with Engines&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Nov 2015 00:38:00 +0100</pubDate>
-        <link>http://esseworks.com/rails-engine-intro</link>
-        <guid isPermaLink="true">http://esseworks.com/rails-engine-intro</guid>
+        <link>http://esseworks.com/bajalovic/2015/11/10/rails-engine-intro.html</link>
+        <guid isPermaLink="true">http://esseworks.com/bajalovic/2015/11/10/rails-engine-intro.html</guid>
         
         <category>rails</category>
         
@@ -146,8 +146,8 @@ $ rails plugin new admin --mountable
 &lt;p&gt;and now I can make a &lt;code&gt;GET /api/v1/weather_alerts&lt;/code&gt; and everything works fine.&lt;/p&gt;
 </description>
         <pubDate>Fri, 06 Nov 2015 16:48:00 +0100</pubDate>
-        <link>http://esseworks.com/json-api-namespaced-models</link>
-        <guid isPermaLink="true">http://esseworks.com/json-api-namespaced-models</guid>
+        <link>http://esseworks.com/bajalovic/2015/11/06/json-api-namespaced-models.html</link>
+        <guid isPermaLink="true">http://esseworks.com/bajalovic/2015/11/06/json-api-namespaced-models.html</guid>
         
         <category>json</category>
         
@@ -273,8 +273,8 @@ $ rails plugin new admin --mountable
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Fri, 06 Nov 2015 11:18:00 +0100</pubDate>
-        <link>http://esseworks.com/json-api-multilang</link>
-        <guid isPermaLink="true">http://esseworks.com/json-api-multilang</guid>
+        <link>http://esseworks.com/bajalovic/2015/11/06/json-api-multilang.html</link>
+        <guid isPermaLink="true">http://esseworks.com/bajalovic/2015/11/06/json-api-multilang.html</guid>
         
         <category>json</category>
         
