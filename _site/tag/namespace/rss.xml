@@ -5,7 +5,7 @@
    
       <title>bajalovic.github.io</title>
    
-   <link>http://esseworks.com</link>
+   <link>https://esseworks.com</link>
    <description>Personal blog</description>
    <language>en-uk</language>
    <managingEditor> Ivan Bajalović</managingEditor>
@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>Rails Engine Intro</title>
-	  <link>/bajalovic/2015/11/10/rails-engine-intro.html</link>
+	  <link>/rails-engine-intro</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-10T00:38:00+01:00</pubDate>
-	  <guid>/bajalovic/2015/11/10/rails-engine-intro.html</guid>
+	  <guid>/rails-engine-intro</guid>
 	  <description><![CDATA[
 	     <p>You probably already used a lot of gems that are actually a rails engine, e.g. <code>ActiveAdmin</code>, <code>Devise</code>, <code>Forem</code>, <code>Spree</code>, ...</p>
 
@@ -70,10 +70,10 @@ $ rails plugin new admin --mountable
 
 	<item>
 	  <title>Json Api Namespaced Models</title>
-	  <link>/bajalovic/2015/11/06/json-api-namespaced-models.html</link>
+	  <link>/json-api-namespaced-models</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-06T16:48:00+01:00</pubDate>
-	  <guid>/bajalovic/2015/11/06/json-api-namespaced-models.html</guid>
+	  <guid>/json-api-namespaced-models</guid>
 	  <description><![CDATA[
 	     <p>If you want to have a resource that needs access to a namespaced model, you can overwrite the <code>resource_type_for(model)</code> method from <code>JSONAPI::Resource</code> module.</p>
 

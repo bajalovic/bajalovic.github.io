@@ -3,7 +3,7 @@ published: true
 layout: post
 date: "2015-11-10 10:11"
 tags: rails helper
-subclass: post
+subclass: post tag-rails tag-helper
 category: bajalovic
 ---
 

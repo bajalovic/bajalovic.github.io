@@ -3,7 +3,7 @@ published: true
 layout: post
 date: "2015-11-06 16:48"
 tags: json jsonapi rails namespace
-subclass: post
+subclass: post tag-json tag-jsonapi tag-rails tag-namespace
 category: bajalovic
 ---
 

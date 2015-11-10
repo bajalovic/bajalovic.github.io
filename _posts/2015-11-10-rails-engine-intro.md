@@ -3,7 +3,7 @@ published: true
 layout: post
 date: "2015-11-10 00:38"
 tags: rails namespace engine
-subclass: post
+subclass: post tag-rails tag-namespace tag-engine
 category: bajalovic
 ---
 

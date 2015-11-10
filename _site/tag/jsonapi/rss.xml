@@ -5,7 +5,7 @@
    
       <title>bajalovic.github.io</title>
    
-   <link>http://esseworks.com</link>
+   <link>https://esseworks.com</link>
    <description>Personal blog</description>
    <language>en-uk</language>
    <managingEditor> Ivan Bajalović</managingEditor>
@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>Json Api Namespaced Models</title>
-	  <link>/bajalovic/2015/11/06/json-api-namespaced-models.html</link>
+	  <link>/json-api-namespaced-models</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-06T16:48:00+01:00</pubDate>
-	  <guid>/bajalovic/2015/11/06/json-api-namespaced-models.html</guid>
+	  <guid>/json-api-namespaced-models</guid>
 	  <description><![CDATA[
 	     <p>If you want to have a resource that needs access to a namespaced model, you can overwrite the <code>resource_type_for(model)</code> method from <code>JSONAPI::Resource</code> module.</p>
 
@@ -43,10 +43,10 @@
 
 	<item>
 	  <title>JSON API Multi Lang Support</title>
-	  <link>/bajalovic/2015/11/06/json-api-multilang.html</link>
+	  <link>/json-api-multilang</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-06T11:18:00+01:00</pubDate>
-	  <guid>/bajalovic/2015/11/06/json-api-multilang.html</guid>
+	  <guid>/json-api-multilang</guid>
 	  <description><![CDATA[
 	     <p>I started using <code>jsonapi-resources</code> gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/</p>
 

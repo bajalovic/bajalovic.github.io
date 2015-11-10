@@ -6,12 +6,12 @@
   xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
   <channel>
     <title>Ivan Bajalović</title>
-    <link>http://esseworks.com</link>
+    <link>https://esseworks.com</link>
     <description>Personal blog</description>
     <pubDate>Tue, 10 Nov 2015 10:11:00 +0100</pubDate>
     <item>
       <title>Humanize Seconds</title>
-      <link>http://esseworks.com/bajalovic/2015/11/10/humanize-seconds.html</link>
+      <link>https://esseworks.com/humanize-seconds</link>
       <description>This is a little helper that can I use for string representation of a seconds. It will say how many days, hours, minutes or seconds there is in a input value.
 
 </description>
@@ -20,7 +20,7 @@
     </item>
     <item>
       <title>Rails Engine Intro</title>
-      <link>http://esseworks.com/bajalovic/2015/11/10/rails-engine-intro.html</link>
+      <link>https://esseworks.com/rails-engine-intro</link>
       <description>You probably already used a lot of gems that are actually a rails engine, e.g. `ActiveAdmin`, `Devise`, `Forem`, `Spree`, ...
 
 </description>
@@ -29,7 +29,7 @@
     </item>
     <item>
       <title>Json Api Namespaced Models</title>
-      <link>http://esseworks.com/bajalovic/2015/11/06/json-api-namespaced-models.html</link>
+      <link>https://esseworks.com/json-api-namespaced-models</link>
       <description>If you want to have a resource that needs access to a namespaced model, you can overwrite the `resource_type_for(model)` method from `JSONAPI::Resource` module.
 
 </description>
@@ -38,7 +38,7 @@
     </item>
     <item>
       <title>JSON API Multi Lang Support</title>
-      <link>http://esseworks.com/bajalovic/2015/11/06/json-api-multilang.html</link>
+      <link>https://esseworks.com/json-api-multilang</link>
       <description>I started using `jsonapi-resources` gem in order to create a JSON API according to JSON schema  defined by http://jsonapi.org/
 
 </description>

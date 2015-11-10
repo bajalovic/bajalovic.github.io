@@ -3,7 +3,7 @@ layout: post
 title: JSON API Multi Lang Support
 date: "2015-11-06 11:18"
 tags: json jsonapi rails i18n
-subclass: post
+subclass: post tag-json tag-jsonapi tag-rails tag-i18n
 category: bajalovic
 published: true
 ---

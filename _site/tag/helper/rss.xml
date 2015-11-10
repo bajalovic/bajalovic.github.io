@@ -5,7 +5,7 @@
    
       <title>bajalovic.github.io</title>
    
-   <link>http://esseworks.com</link>
+   <link>https://esseworks.com</link>
    <description>Personal blog</description>
    <language>en-uk</language>
    <managingEditor> Ivan Bajalović</managingEditor>
@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>Humanize Seconds</title>
-	  <link>/bajalovic/2015/11/10/humanize-seconds.html</link>
+	  <link>/humanize-seconds</link>
 	  <author>Ivan Bajalović</author>
 	  <pubDate>2015-11-10T10:11:00+01:00</pubDate>
-	  <guid>/bajalovic/2015/11/10/humanize-seconds.html</guid>
+	  <guid>/humanize-seconds</guid>
 	  <description><![CDATA[
 	     <p>This is a little helper that can I use for string representation of a seconds. It will say how many days, hours, minutes or seconds there is in a input value.</p>
 
