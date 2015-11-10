@@ -2,7 +2,7 @@
 layout: default
 logo: /assets/images/esseworks.png
 cover: /assets/images/cover4.jpg
-disqus: false
+disqus: true
 navigation: false
 class: "post-template"
 published: true
@@ -85,7 +85,9 @@ published: true
                     <span class="hidden">Google+</span>
                 </a>
             </section>
-            
+            {% if page.disqus %}
+                {% include disqus.html %}
+            {% endif %}
         </footer>
 
     </article>

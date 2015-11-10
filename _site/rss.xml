@@ -8,7 +8,34 @@
     <title>Ivan Bajalović</title>
     <link>http://esseworks.com</link>
     <description>Personal blog</description>
-    <pubDate>Fri, 06 Nov 2015 11:18:00 +0100</pubDate>
+    <pubDate>Tue, 10 Nov 2015 10:11:00 +0100</pubDate>
+    <item>
+      <title>Humanize Seconds</title>
+      <link>http://esseworks.com/humanize-seconds</link>
+      <description>This is a little helper that can I use for string representation of a seconds. It will say how many days, hours, minutes or seconds there is in a input value.
+
+</description>
+      <pubDate>Tue, 10 Nov 2015 10:11:00 +0100</pubDate>
+      <dc:date>2015-11-10T10:11:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Rails Engine Intro</title>
+      <link>http://esseworks.com/rails-engine-intro</link>
+      <description>You probably already used a lot of gems that are actually a rails engine, e.g. `ActiveAdmin`, `Devise`, `Forem`, `Spree`, ...
+
+</description>
+      <pubDate>Tue, 10 Nov 2015 00:38:00 +0100</pubDate>
+      <dc:date>2015-11-10T00:38:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Json Api Namespaced Models</title>
+      <link>http://esseworks.com/json-api-namespaced-models</link>
+      <description>If you want to have a resource that needs access to a namespaced model, you can overwrite the `resource_type_for(model)` method from `JSONAPI::Resource` module.
+
+</description>
+      <pubDate>Fri, 06 Nov 2015 16:48:00 +0100</pubDate>
+      <dc:date>2015-11-06T16:48:00+01:00</dc:date>
+    </item>
     <item>
       <title>JSON API Multi Lang Support</title>
       <link>http://esseworks.com/json-api-multilang</link>
@@ -18,6 +45,6 @@
       <pubDate>Fri, 06 Nov 2015 11:18:00 +0100</pubDate>
       <dc:date>2015-11-06T11:18:00+01:00</dc:date>
     </item>
-    <dc:date>2015-11-06T11:18:00+01:00</dc:date>
+    <dc:date>2015-11-10T10:11:00+01:00</dc:date>
   </channel>
 </rss>
